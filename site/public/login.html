@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="imgs/logo1.png">
+    <title>TechBerry - Login</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <div class="fundo_login">
+        <div class="header">
+            <div class="container">
+
+                <div class="titulo">
+                    <img src="imgs/logo1.png" alt="">
+                    <h1>TechBerry</h1>
+                </div>
+
+                <ul class="navBar">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="servicos.html">
+                            Serviços
+                        </a>
+                    </li>
+                    <li>
+                        <a href="simulador.html">
+                            Simulador
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="register">
+                    <a href="cadastro.html">
+                        <div class="cadastro_botao">
+                            <li>Cadastro</li>
+                        </div>
+                    </a>
+
+                    |
+
+                    <a href="login.html">
+                        <div class="login_botao">
+                            <li> Login</li>
+                        </div>
+                    </a>
+
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- BANNER -->
+
+        <div class="banner_login">
+            <div class="container">
+
+
+                <div class="login">
+                    <h2>Login</h2>
+                    <div class="box_login">
+                        Email
+                        <div class="campo">
+                            <input id="email_input" class="ipt" type="text" placeholder="exemplo@gmail.com">
+                        </div>
+                        Senha
+                        <div class="campo">
+                            <input id="senha_input" class="ipt" type="password" placeholder="**********">
+                        </div>
+                    </div>
+                    <span id="mensagem_erro" class="msg_erro"></span>
+
+                    <button onclick="entrar()" class="btn_acessar">Acessar</button>
+                    <h6>Sem registro? <a href="cadastro.html">Criar conta</a></h6>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script>
+    function entrar() {
+        // aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            mensagem_erro.style.display = 'block';
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+            // finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(".com.br") == false)) {
+            mensagem_erro.style.display = 'block';
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            // finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nomeCliente;
+                    sessionStorage.ID_USUARIO = json.idCliente;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/home_dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                mensagem_erro.innerHTML = "Ops, a conta não foi encontrada!";
+
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        mensagem_erro.style.display = "none"
+    }
+</script>

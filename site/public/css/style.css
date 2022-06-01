@@ -1,0 +1,441 @@
+body {
+    margin: 0;
+    background: #B31C45;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    /* border: 3px solid red; */
+}
+ 
+
+/* FUNDO HEADER + BANNER */
+
+.fundo {
+    margin: auto;
+    background-image: url(../assets/imgs/multiple-strawberries-blue-background-cut4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 560px;
+    /* border: 3px solid purple; */
+}
+
+.fundo_login {
+    margin: auto;
+    background-color: #B31C45;
+    height: 657px;
+    width: 100%;
+    /* border: 3px solid purple; */
+}
+
+/* HEADER */
+
+.header {
+    /* background-color: rgb(0, 0, 0, 0.3); */
+    color: white;
+    display: flex;
+    margin-bottom: 24px;
+    /* border: 3px solid blue; */
+
+}
+
+.header .container{
+    justify-content: space-between;
+}
+
+.titulo {
+    color: white;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 300px;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.titulo img{
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    margin-right: 12px;
+    box-shadow: 1px 1px #980000;
+}
+
+.navBar {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.register {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 220px;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.register button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+
+    display: flex;
+    justify-content: center;
+    border-radius: 24px;
+    border: 0;
+    padding: 10px;
+}
+
+#cadastro {
+    background-color: white;
+    color: black;
+    box-shadow: 1px 1px rgb(91, 91, 91);
+    width: 92px;
+    height: 37px;
+    border-radius: 24px;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    padding: 4px;
+
+    
+}
+
+#cadastro a{
+    color: #000;
+}
+
+#login {
+    background-color: #E3101F;
+    color: white;
+    box-shadow: 1px 1px #980000;
+    width: 92px;
+    height: 37px;
+    border-radius: 24px;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    padding: 4px;
+}
+
+
+.aqui {
+    /* font-size: 18px; */
+    font-weight: bold;
+}
+
+a {
+    color: white;
+    text-decoration: none; 
+}
+
+/* BANNER */
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 3px solid blue;  */
+}
+
+.banner .container{
+    justify-content: space-between;
+    display: flex;
+
+}
+
+.banner_login .container{
+    justify-content: center;
+    display: flex;
+    float: center;
+    
+}
+
+/*ComeÃ§o login */
+
+.banner_login .login{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 24px;
+    width: 400px;
+    height: 500px;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+    
+
+}
+
+
+
+
+.banner_login .login .ipt{
+    border-radius: 8px;
+    height: 24px;
+    width: 350px;
+    /* font-size: 20px; */
+    justify-items: center;
+    padding: 4px;
+}
+
+.banner_login .login .btn_acessar{
+    border-radius: 24px;
+    height: 40px;
+    width: 350px;
+    font-size: 20px;
+    margin-top: 30px;
+    border: none;
+    justify-items: center;
+    
+}
+/*fim login */
+
+/*ComeÃ§o cadastro */
+
+.banner_cadastro .cadastro{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 24px;
+    width: 1000px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+    
+
+}
+
+.banner_cadastro .container{
+    justify-content: center;
+    display: flex;
+    float: center
+}
+
+.banner_cadastro .container .cadastro .boxes_cadastro{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    
+}
+
+.banner_cadastro .container .cadastro .boxes_cadastro .linha{
+    height: 325px;
+    width: 2px;
+    background-color: rgb(239, 239, 239);
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    
+}
+
+.banner_cadastro .container .cadastro .boxes_cadastro .boxes_cadastro1{
+    margin-right: 10px;
+}
+
+.banner_cadastro .container .cadastro .boxes_cadastro .boxes_cadastro2{
+    margin-left: 10px;
+    
+}
+
+.banner_cadastro .container .cadastro .cadastro_titulo{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.banner_cadastro .container .cadastro .fim_registro{
+    align-items: center;
+    justify-content: center;
+}
+
+.banner_cadastro .container .cadastro .fim_registro .btn_cadastro{
+    border-radius: 24px;
+    height: 40px;
+    width: 350px;
+    font-size: 20px;
+    margin-top: 30px;
+    border: none;
+    justify-items: center;
+}
+
+.btn_cadastro:hover, .btn_acessar:hover{
+    background-color: #B31C45;
+    color: #fff;
+    cursor: pointer;
+}
+
+.banner_cadastro .container .cadastro .ipt{
+    border-radius: 8px;
+    height: 20px;
+    width: 320px;
+    font-size: 12px;
+    justify-items: center;
+    padding: 4px;
+}
+
+/*fim cadastro */
+
+
+.banner h1 {
+    color: white;
+    font-size: 56px;
+    width: 48%;
+    /* text-shadow: 1px 1px black;  */
+}
+
+/* SOCIAL */
+
+.social {
+    background-color: white;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+.social .container h4{
+    font-weight: lighter;
+}
+
+.parte1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 72px;
+}
+
+.parte2 {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    display: flex;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.parte2 .container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.parte3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 72px;
+    padding-bottom: 72px;
+}
+
+.box1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+
+.box2 {
+    display: flex;
+    align-items: center;
+}
+
+#greenhouse {
+    width: 650px;
+}
+
+#graphs {
+    width: 750px;
+}
+
+#profit {
+    width: 650px;
+}
+
+.footer{
+    background-color: #B31C45;
+    height: 300px;
+    color: white;
+    
+}
+
+.footer .titulo_footer{
+    width: 200px;
+}
+
+.footer .footer_box1 .div_footer{
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-start;
+}
+
+.ul_footer{
+    list-style: none;
+}
+
+.logo_footer{
+    background-color: #B31C45;
+    color: white;
+    font-size: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 50px;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    float: right;
+}
+
+.logo_footer h3{
+    
+}
+
+.logo_footer img{
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    margin-right: 12px;
+    margin-left: 1000px;
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #E3101F;
+}

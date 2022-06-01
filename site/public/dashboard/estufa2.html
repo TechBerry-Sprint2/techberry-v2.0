@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBerry - Dashboard</title>
+    <link rel="icon" href="../imgs/logo1.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="estufas.css">
+    <script src="../js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao()">
+
+    <div class="janela">
+        <div class="esquerda">
+            <h1>TechBerry</h1>
+
+            <a href="home_dashboard.html">
+                <div class="esquerdaImg">
+                    <img src="../imgs/logo1.png" alt="">
+                </div>
+            </a>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">user</span>!</h3>
+            </div>
+
+            <div class="btn_todos">
+                <a class="btn-nav" href="home_dashboard.html">
+                    <img class="icon-nav" src="../imgs/home-icon.png" alt="">
+                    <span>Home</span>
+                </a>
+
+
+                <span class="lista">
+                    <details>
+
+                        <summary class="btn-nav">
+                            <img class="icon-nav" src="../imgs/plant-pot.png" alt="">
+                            <span class="selected">Estufas</span>
+                        </summary>
+                        <span class="lista-itens">
+                            <a href="estufa1.html">
+                                <img class="icon-lista" src="../imgs/plant-pot-red.png" alt="">
+                                <span>Estufa 1</span>
+                            </a>
+                            <a href="estufa2.html">
+                                <img class="icon-lista" src="../imgs/plant-pot-red.png" alt="">
+                                <span class="selected">Estufa 2</span>
+                            </a>
+                        </span>
+                    </details>
+                </span>
+
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <img class="icon-nav" src="../imgs/exit-icon.png" alt="">
+                    <span>Sair</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="direita">
+
+            <div class="teste">
+                <div class="nome_metrica">
+                    Métricas
+                    <h5>Temperatura (°C) | Umidade (%)</h5>
+                </div>
+
+                <div class="regua">
+                    <div class="item-regua">
+                        <h3 class="perigo-frio">Perigo</h3>
+                        <h5>12.2°C</h5>
+                        <h5>20%</h5>
+                    </div>
+                    <div class="item-regua ">
+                        <h3 class="alerta-frio">Alerta</h3>
+                        <h5>17.7°C</h5>
+                        <h5>37%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="ideal">Ideal</h3>
+                        <h5>17.8ºC - 21.9°C</h5>
+                        <h5>37.1% - 64.4%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="alerta-quente">Alerta</h3>
+                        <h5>22°C</h5>
+                        <h5>64.5%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="perigo-quente">Perigo</h3>
+                        <h5>26.7°C</h5>
+                        <h5>76%</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="principais">
+                <div class="principal1">
+                    <div class="nome_estufa">Estufa 1</div>
+                    <h1 class="categoria">Temperatura</h1>
+                    <div class="informacoes_tudo">
+                        <div class="informacoes info1">
+                            <div class="box1">
+
+                                <span class="titulo">Histórico de Temperatura (°C)</span>
+                                <div class="parte1_temp">
+                                    Dados do dia: <span id="data_atual_temp"></span>
+                                </div>
+                                <div>
+                                    <canvas id="chart_temp"></canvas>
+                                </div>
+                            </div>
+                            <div class="box3">
+                                <span class="titulo">Temperatura Atual</span>
+                                <div class="parte1_temp">
+                                    <span>Status:</span>
+                                    <div class="status ideal"></div> <span>Ideal</span>
+                                </div>
+                                <div class="parte2_temp">
+                                    <canvas id="chart_tempReal"></canvas>
+                                    <span class="valor_tempReal">19.7°C</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="informacoes info2">
+                            <div class="box2">
+
+                                <div class="kpi anor_temp">
+                                    <span class="titulo">Anormalidades</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">
+                                        2
+                                    </span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 3: 22°C (14:00)
+                                        </li>
+
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 3: 24°C (14:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta alerta-quente"></div>
+                                </div>
+
+                                <div class="kpi maior_temp">
+                                    <span class="titulo">Maior Temperatura</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">24°C</span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 3: 24°C (14:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta alerta-quente"></div>
+                                </div>
+                                <div class="kpi menor_temp">
+                                    <span class="titulo">Menor Temperatura</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">18°C</span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado ideal"></div>
+                                            Sensor 1: 18°C (13:00)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta ideal"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="categoria">Umidade</h1>
+                    <div class="informacoes_tudo">
+                        <div class="informacoes info1">
+                            <div class="box1">
+                                <span class="titulo">Histórico de Umidade (%)</span>
+                                <div class="parte1_umid">
+                                    Dados do dia: <span id="data_atual_umid"></span>
+                                </div>
+                                <div>
+                                    <canvas id="chart_umid"></canvas>
+                                </div>
+                            </div>
+                            <div class="box3">
+                                <span class="titulo">Umidade Atual</span>
+                                <div class="parte1_umid">
+                                    <span>Status:</span>
+                                    <div class="status alerta-quente"></div> <span>Alerta</span>
+                                </div>
+                                <div class="parte2_umid">
+                                    <canvas id="chart_umidReal"></canvas>
+                                    <span class="valor_umidReal">66%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="informacoes info2">
+                            <div class="box2">
+
+                                <div class="kpi anor_umid">
+                                    <span class="titulo">Anormalidades</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">
+                                        3
+                                    </span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 4: 68% (14:30)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 4: 73% (15:00)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado perigo-quente"></div>
+                                            Sensor 4: 78% (15:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta perigo-quente"></div>
+                                </div>
+
+                                <div class="kpi maior_umid">
+                                    <span class="titulo">Maior Umidade</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">78%</span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado perigo-quente"></div>
+                                            Sensor 4: 78% (15:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta perigo-quente"></div>
+                                </div>
+                                <div class="kpi menor_umid">
+                                    <span class="titulo">Menor Umidade</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">38%</span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado ideal"></div>
+                                            Sensor 2: 38% (11:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta ideal"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="categoria">Sensores</h1>
+                    <div class="informacoes_tudo">
+                        <div class="informacoes">
+                            <div class="principal2">
+                                <span class="nome_sensor">Sensor 1</span>
+                                <div class="box4">
+                                    <div class="boxes_sensores">
+                                        <div class="box3">
+                                            <span class="titulo">Temperatura Atual</span>
+                                            <div class="parte1_temp">
+                                                <span>Status:</span>
+                                                <div class="status ideal"></div> <span>Ideal</span>
+                                            </div>
+                                            <div class="parte2_temp">
+                                                <canvas id="chart_tempReal2"></canvas>
+                                                <span class="valor_tempReal">19.7°C</span>
+                                            </div>
+                                        </div>
+                                        <div class="box3">
+                                            <span class="titulo">Umidade Atual</span>
+                                            <div class="parte1_umid">
+                                                <span>Status:</span>
+                                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                                            </div>
+                                            <div class="parte2_umid">
+                                                <canvas id="chart_umidReal2"></canvas>
+                                                <span class="valor_umidReal">66%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="principal2">
+                                <span class="nome_sensor">Sensor 2</span>
+                                <div class="box4">
+                                    <div class="boxes_sensores">
+                                        <div class="box3">
+                                            <span class="titulo">Temperatura Atual</span>
+                                            <div class="parte1_temp">
+                                                <span>Status:</span>
+                                                <div class="status ideal"></div> <span>Ideal</span>
+                                            </div>
+                                            <div class="parte2_temp">
+                                                <canvas id="chart_tempReal3"></canvas>
+                                                <span class="valor_tempReal">19.7°C</span>
+                                            </div>
+                                        </div>
+                                        <div class="box3">
+                                            <span class="titulo">Umidade Atual</span>
+                                            <div class="parte1_umid">
+                                                <span>Status:</span>
+                                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                                            </div>
+                                            <div class="parte2_umid">
+                                                <canvas id="chart_umidReal3"></canvas>
+                                                <span class="valor_umidReal">66%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="informacoes">
+                            <div class="principal2">
+                                <span class="nome_sensor">Sensor 3</span>
+                                <div class="box4">
+                                    <div class="boxes_sensores">
+                                        <div class="box3">
+                                            <span class="titulo">Temperatura Atual</span>
+                                            <div class="parte1_temp">
+                                                <span>Status:</span>
+                                                <div class="status ideal"></div> <span>Ideal</span>
+                                            </div>
+                                            <div class="parte2_temp">
+                                                <canvas id="chart_tempReal4"></canvas>
+                                                <span class="valor_tempReal">19.7°C</span>
+                                            </div>
+                                        </div>
+                                        <div class="box3">
+                                            <span class="titulo">Umidade Atual</span>
+                                            <div class="parte1_umid">
+                                                <span>Status:</span>
+                                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                                            </div>
+                                            <div class="parte2_umid">
+                                                <canvas id="chart_umidReal4"></canvas>
+                                                <span class="valor_umidReal">66%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="principal2">
+                                <span class="nome_sensor">Sensor 4</span>
+                                <div class="box4">
+                                    <div class="boxes_sensores">
+                                        <div class="box3">
+                                            <span class="titulo">Temperatura Atual</span>
+                                            <div class="parte1_temp">
+                                                <span>Status:</span>
+                                                <div class="status ideal"></div> <span>Ideal</span>
+                                            </div>
+                                            <div class="parte2_temp">
+                                                <canvas id="chart_tempReal5"></canvas>
+                                                <span class="valor_tempReal">19.7°C</span>
+                                            </div>
+                                        </div>
+                                        <div class="box3">
+                                            <span class="titulo">Umidade Atual</span>
+                                            <div class="parte1_umid">
+                                                <span>Status:</span>
+                                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                                            </div>
+                                            <div class="parte2_umid">
+                                                <canvas id="chart_umidReal5"></canvas>
+                                                <span class="valor_umidReal">66%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    data_hoje = new Date();
+    ano = data_hoje.getFullYear();
+    mes = data_hoje.getMonth() + 1;
+    dia = data_hoje.getDate();
+    data_atual_temp.innerHTML = dia + "/" + mes + "/" + ano;
+    data_atual_umid.innerHTML = dia + "/" + mes + "/" + ano;
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    // GRÁFICO TEMPERATURA 1 - HISTÓRICO TEMPERATURA
+
+    const labels_hist = [
+        '13:00',
+        '13:30',
+        '14:00',
+        '14:30',
+        '15:00',
+        '15:30',
+    ];
+    const data_temp = {
+        labels: labels_hist,
+        datasets: [{
+                label: 'Sensor 1',
+                backgroundColor: '#e7ed3e',
+                borderColor: '#e7ed3e',
+                data: [18, 20, 21, 20.5, 20, 20, 19.3],
+            },
+            {
+                label: 'Sensor 2',
+                backgroundColor: '#ff8880',
+                borderColor: '#ff8880',
+                data: [19, 19.3, 20, 21.4, 21, 19.5, 19],
+            },
+            {
+                label: 'Sensor 3',
+                backgroundColor: '#ff892e',
+                borderColor: '#ff892e',
+                data: [19.3, 20.2, 22, 24, 21, 19.8, 19.4],
+            },
+            {
+                label: 'Sensor 4',
+                backgroundColor: '#bd3535',
+                borderColor: '#bd3535',
+                data: [19, 19.5, 20, 21, 19.8, 19.7, 19],
+            }
+        ]
+
+    };
+    const config_temp = {
+        type: 'line',
+        data: data_temp,
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+        }
+    };
+
+    const chart_temp = new Chart(
+        document.getElementById('chart_temp'),
+        config_temp
+    );
+
+    // GRÁFICO TEMPERATURA 2 - TEMPERATURA EM TEMPO REAL
+
+    const data_tempReal = {
+        labels: [
+            'Temperatura'
+        ],
+        datasets: [{
+            label: 'Temperatura',
+            data: [19.7, 40],
+            backgroundColor: [
+                '#9ccc65',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    const config_tempReal = {
+        type: 'doughnut',
+        data: data_tempReal,
+        options: {
+            circumference: 180,
+            rotation: 270
+        }
+    };
+
+    const chart_tempReal = new Chart(
+        document.getElementById('chart_tempReal'),
+        config_tempReal
+    );
+
+    const chart_tempReal2 = new Chart(
+        document.getElementById('chart_tempReal2'),
+        config_tempReal
+    );
+    const chart_tempReal3 = new Chart(
+        document.getElementById('chart_tempReal3'),
+        config_tempReal
+    );
+    const chart_tempReal4 = new Chart(
+        document.getElementById('chart_tempReal4'),
+        config_tempReal
+    );
+    const chart_tempReal5 = new Chart(
+        document.getElementById('chart_tempReal5'),
+        config_tempReal
+    );
+
+    // GRÁFICO UMIDADE 1 - HISTÓRICO UMIDADE 
+
+    const data_umid = {
+        labels: labels_hist,
+        datasets: [{
+                label: 'Sensor 1',
+                backgroundColor: '#6495ED',
+                borderColor: '#6495ED',
+                data: [42, 45, 46, 48, 51, 49, 48],
+            },
+            {
+                label: 'Sensor 2',
+                backgroundColor: '#9efff7',
+                borderColor: '#9efff7',
+                data: [41, 45, 47, 47, 50, 51, 47],
+            },
+            {
+                label: 'Sensor 3',
+                backgroundColor: '#3747a6',
+                borderColor: '#3747a6',
+                data: [46, 49, 52, 53, 55, 60, 61],
+            },
+            {
+                label: 'Sensor 4',
+                backgroundColor: '#278c53',
+                borderColor: '#278c53',
+                data: [50, 54, 61, 68, 73, 78, 72],
+            }
+        ]
+    };
+    const config_umid = {
+        type: 'line',
+        data: data_umid,
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+        }
+    };
+
+    const chart_umid = new Chart(
+        document.getElementById('chart_umid'),
+        config_umid
+    );
+
+    // GRÁFICO UMIDADE 2 - UMIDADE EM TEMPO REAL
+
+    const data_umidReal = {
+        labels: [
+            'Umidade'
+        ],
+        datasets: [{
+            label: 'Umidade',
+            data: [66, 34],
+            backgroundColor: [
+                '#e0ce2b',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    const config_umidReal = {
+        type: 'doughnut',
+        data: data_umidReal,
+        options: {
+            circumference: 180,
+            rotation: 270
+        }
+    };
+
+    const chart_umidReal = new Chart(
+        document.getElementById('chart_umidReal'),
+        config_umidReal
+    );
+
+    const chart_umidReal2 = new Chart(
+        document.getElementById('chart_umidReal2'),
+        config_umidReal
+    );
+
+    const chart_umidReal3 = new Chart(
+        document.getElementById('chart_umidReal3'),
+        config_umidReal
+    );
+    const chart_umidReal4 = new Chart(
+        document.getElementById('chart_umidReal4'),
+        config_umidReal
+    );
+    const chart_umidReal5 = new Chart(
+        document.getElementById('chart_umidReal5'),
+        config_umidReal
+    );
+</script>
+
+</html>

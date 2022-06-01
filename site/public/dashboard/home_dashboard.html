@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBerry - Dashboard</title>
+    <link rel="icon" href="../imgs/logo1.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="home_dashboard.css">
+    <script src="../js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao()">
+
+    <div class="janela">
+        <div class="esquerda">
+            <h1>TechBerry</h1>
+
+            <a href="home_dashboard.html">
+                <div class="esquerdaImg">
+                    <img src="../imgs/logo1.png" alt="">
+                </div>
+            </a>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">user</span>!</h3>
+            </div>
+
+            <div class="btn_todos">
+                <a class="btn-nav" href="home_dashboard.html">
+                    <img class="icon-nav" src="../imgs/home-icon.png" alt="">
+                    <span class="selected">Home</span>
+                </a>
+
+
+                <span class="lista">
+                    <details>
+
+                        <summary class="btn-nav">
+                            <img class="icon-nav" src="../imgs/plant-pot.png" alt="">
+                            <span>Estufas</span>
+                        </summary>
+                        <span class="lista-itens">
+                            <a href="estufa1.html">
+                                <img class="icon-lista" src="../imgs/plant-pot-red.png" alt="">
+                                <span>Estufa 1</span>
+                            </a>
+                            <a href="estufa2.html">
+                                <img class="icon-lista" src="../imgs/plant-pot-red.png" alt="">
+                                <span>Estufa 2</span>
+                            </a>
+                        </span>
+                    </details>
+                </span>
+
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <img class="icon-nav" src="../imgs/exit-icon.png" alt="">
+                    <span>Sair</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="direita">
+
+            <div class="teste">
+                <div class="nome_metrica">
+                    Métricas
+                    <h5>Temperatura (°C) | Umidade (%)</h5>
+                </div>
+
+                <div class="regua">
+                    <div class="item-regua">
+                        <h3 class="perigo-frio">Perigo</h3>
+                        <h5>12.2°C</h5>
+                        <h5>20%</h5>
+                    </div>
+                    <div class="item-regua ">
+                        <h3 class="alerta-frio">Alerta</h3>
+                        <h5>17.7°C</h5>
+                        <h5>37%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="ideal">Ideal</h3>
+                        <h5>17.8ºC - 21.9°C</h5>
+                        <h5>37.1% - 64.4%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="alerta-quente">Alerta</h3>
+                        <h5>22°C</h5>
+                        <h5>64.5%</h5>
+                    </div>
+                    <div class="item-regua">
+                        <h3 class="perigo-quente">Perigo</h3>
+                        <h5>26.7°C</h5>
+                        <h5>76%</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principais">
+                <div class="principal1">
+                    <span class="nome_estufa">Estufa 1</span>
+
+                    <div class="informacoes_tudo">
+                        <div class="informacoes info1">
+                            <div class="box1">
+                                <span class="titulo">Temperatura Atual</span>
+                                <div class="parte1_temp">
+                                    <span>Status:</span>
+                                    <div class="status ideal"></div> <span>Ideal</span>
+                                </div>
+                                <div class="parte2_temp">
+                                    <div id="divPai1">
+                                        <canvas id="chart_tempReal"></canvas>
+                                    </div>
+                                    <span id="spT1" class="valor_tempReal"></span>
+                                </div>
+
+                            </div>
+                            <div class="box1">
+                                <span class="titulo">Umidade Atual</span>
+                                <div class="parte1_umid">
+                                    <span>Status:</span>
+                                    <div class="status alerta-quente"></div> <span>Alerta</span>
+                                </div>
+                                <div class="parte2_umid">
+                                    <div id="divPai2">
+                                        <canvas id="chart_umidReal"></canvas>
+                                    </div>
+                                    <span id="spU1" class="valor_umidReal"></span>
+                                </div>
+                            </div>
+                            <div class="box2">
+                                <div class="kpi">
+                                    <span class="titulo">Quantidade Sensores</span>
+                                    <span>(Ativos)</span>
+                                    <span class="valor_kpi">4</span>
+                                    <div class="valor_alerta vazio"></div>
+                                </div>
+                                <div class="kpi">
+                                    <span class="titulo">Anormalidades</span>
+                                    <span>(Últimas 24h)</span>
+                                    <span class="valor_kpi">5</span>
+                                    <ul class="msg">
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 3: Temperatura 22°C (14:00)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 3: Temperatura 24°C (14:30)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 4: Umidade 68% (14:30)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado alerta-quente"></div>
+                                            Sensor 4: Umidade 73% (15:00)
+                                        </li>
+                                        <li>
+                                            <div class="msg_estado perigo-quente"></div>
+                                            Sensor 4: Umidade 78% (15:30)
+                                        </li>
+                                    </ul>
+                                    <div class="valor_alerta alerta-quente"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="principais">
+                <div class="principal1">
+                    <span class="nome_estufa">Estufa 2</span>
+
+                    <div class="informacoes info1">
+                        <div class="box1">
+                            <span class="titulo">Temperatura Atual</span>
+                            <div class="parte1_temp">
+                                <span>Status:</span>
+                                <div class="status ideal"></div> <span>Ideal</span>
+                            </div>
+                            <div class="parte2_temp">
+                                <canvas id="chart_tempReal2"></canvas>
+                                <span id="spT2" class="valor_tempReal"></span>
+                            </div>
+
+                        </div>
+                        <div class="box1">
+                            <span class="titulo">Umidade Atual</span>
+                            <div class="parte1_umid">
+                                <span>Status:</span>
+                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                            </div>
+                            <div class="parte2_umid">
+                                <canvas id="chart_umidReal2"></canvas>
+                                <span id="spU2" class="valor_umidReal"></span>
+                            </div>
+                        </div>
+                        <div class="box2">
+                            <div class="kpi">
+                                <span class="titulo">Quantidade Sensores</span>
+                                <span>(Ativos)</span>
+                                <span class="valor_kpi">4</span>
+                                <div class="valor_alerta vazio"></div>
+                            </div>
+                            <div class="kpi">
+                                <span class="titulo">Anormalidades</span>
+                                <span>(Últimas 24h)</span>
+                                <span class="valor_kpi">5</span>
+                                <ul class="msg">
+                                    <li>
+                                        <div class="msg_estado alerta-quente"></div>
+                                        Sensor 3: Temperatura 22°C (14:00)
+                                    </li>
+                                    <li>
+                                        <div class="msg_estado alerta-quente"></div>
+                                        Sensor 3: Temperatura 24°C (14:30)
+                                    </li>
+                                    <li>
+                                        <div class="msg_estado alerta-quente"></div>
+                                        Sensor 4: Umidade 68% (14:30)
+                                    </li>
+                                    <li>
+                                        <div class="msg_estado alerta-quente"></div>
+                                        Sensor 4: Umidade 73% (15:00)
+                                    </li>
+                                    <li>
+                                        <div class="msg_estado perigo-quente"></div>
+                                        Sensor 4: Umidade 78% (15:30)
+                                    </li>
+                                </ul>
+                                <div class="valor_alerta alerta-quente"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var idEstufa = 0;
+    var idSensor = 0;
+    var idMedida = 0;
+    var tempEst1 = 0;
+    var umidEst1 = 0;
+    
+    fetch("/medidas/pegarEstufas", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idCliente: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json[0].idEstufa);
+                idEstufa = json[0].idEstufa;
+                buscarSensor();
+            })
+        }
+    })
+function buscarSensor() {
+    
+    fetch("/medidas/pegarSensores", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idEstufa: idEstufa
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json[0].idSensor);
+                idSensor = json[0].idSensor;
+                sessionStorage.ID_SENSOR = idSensor;
+                setInterval(() => {
+                    buscarMedida();       
+                }, 1000);
+            })
+        }
+    })
+}
+function buscarMedida() {
+    
+    fetch("/medidas/pegarMedida", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idSensor: idSensor
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json[0].idMedida);
+                idMedida = json[0].idMedida;
+                console.log(json[0].temperaturaRegistrada);
+                tempEst1 = json[0].temperaturaRegistrada;
+                console.log(json[0].umidadeRegistrada);
+                umidEst1 = json[0].umidadeRegistrada;
+
+
+        document.getElementById('chart_umidReal').remove();
+        document.getElementById('chart_tempReal').remove();
+
+        ngt = document.createElement('canvas');
+        ngt.setAttribute('id', 'chart_tempReal');
+        spT1.innerHTML = `${tempEst1}ºC`;
+        divPai1.appendChild(ngt);
+
+        ngu = document.createElement('canvas');
+        ngu.setAttribute('id', 'chart_umidReal');
+        spU1.innerHTML = `${umidEst1}%`;
+        divPai2.appendChild(ngu);
+
+
+
+                var data_tempReal = {
+        labels: [
+            'Temperatura Atual em °C'
+        ],
+        datasets: [{
+            labels: [tempEst1],
+            data: [tempEst1, (26.7-tempEst1)],
+            backgroundColor: [
+                '#9ccc65',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    var config_tempReal = {
+        type: 'doughnut',
+        data: data_tempReal,
+        options: {
+            circumference: 180,
+            rotation: 270,
+            animation: 0
+        }
+    };
+
+    var data_umidReal = {
+        labels: [
+            'Umidade Atual em %'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [umidEst1, (100 - umidEst1)],
+            backgroundColor: [
+                '#e0ce2b',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    var config_umidReal = {
+        type: 'doughnut',
+        data: data_umidReal,
+        options: {
+            circumference: 180,
+            rotation: 270,
+            animation: 0
+        }
+    };
+
+    var chart_tempReal = new Chart(
+        document.getElementById('chart_tempReal'),
+        config_tempReal
+    );
+    var chart_umidReal = new Chart(
+        document.getElementById('chart_umidReal'),
+        config_umidReal
+    );
+            })
+        }
+    })
+}
+
+
+
+    
+    var data_tempReal2 = {
+        labels: [
+            'Temperatura Atual em °C'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [estufa2temp.toFixed(1), (26.7 - estufa2temp)],
+            backgroundColor: [
+                '#9ccc65',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    var config_tempReal2 = {
+        type: 'doughnut',
+        data: data_tempReal2,
+        options: {
+            circumference: 180,
+            rotation: 270
+        }
+    };
+
+    var data_umidReal2 = {
+        labels: [
+            'Umidade Atual em %'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [estufa2umi.toFixed(1), (76 - estufa2umi)],
+            backgroundColor: [
+                '#00f2ff',
+                'whitesmoke'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    var config_umidReal2 = {
+        type: 'doughnut',
+        data: data_umidReal2,
+        options: {
+            circumference: 180,
+            rotation: 270
+        }
+    };
+
+    var chart_tempReal2 = new Chart(
+        document.getElementById('chart_tempReal2'),
+        config_tempReal2
+    );
+    var chart_umidReal2 = new Chart(
+        document.getElementById('chart_umidReal2'),
+        config_umidReal2
+    );
+
+
+
+
+    // GRÁFICO TEMPERATURA (ESTUFA 2) - TEMPERATURA EM TEMPO REAL
+
+
+
+    // function atualizacaoPeriodica() {
+    //     obterdados(1);
+    //     obterdados(2);
+    //     obterdados(3);
+    //     obterdados(4);
+
+    //     function sendData() {
+    // 		var http = new XMLHttpRequest();
+    // 		http.open('POST', 'http://localhost:3000/api/sendData', false);
+    // 		http.send(null);
+    // 	}
+
+    //     setInterval(() => {
+    // 		sendData();
+    // 	}, 2000);
+    //     setTimeout(atualizacaoPeriodica, 5000);
+    // }
+
+    function obterdados(idAquario) {
+        fetch(`/medidas/tempo-real/${idAquario}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                        }
+
+                        alertar(resposta[0].temperatura, idAquario);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function alertar(temperatura, idAquario) {
+        var limites = {
+            muito_quente: 23,
+            quente: 22,
+            ideal: 20,
+            frio: 10,
+            muito_frio: 5
+        };
+
+        var classe_temperatura = 'cor-alerta';
+
+        if (temperatura >= limites.muito_quente) {
+            classe_temperatura = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+        } else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+            classe_temperatura = 'cor-alerta alerta-quente';
+            console.log("caiu no 2")
+        } else if (temperatura < limites.quente && temperatura > limites.frio) {
+            classe_temperatura = 'cor-alerta ideal';
+            console.log("caiu no 3")
+        } else if (temperatura <= limites.frio && temperatura > limites.muito_frio) {
+            classe_temperatura = 'cor-alerta alerta-frio';
+            console.log("caiu no 4")
+        } else if (temperatura < limites.min_temperatura) {
+            classe_temperatura = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+
+        var card;
+
+        if (idAquario == 1) {
+            temp_aquario_1.innerHTML = temperatura + "°C";
+            card = card_1
+        } else if (idAquario == 2) {
+            temp_aquario_2.innerHTML = temperatura + "°C";
+            card = card_2
+        } else if (idAquario == 3) {
+            temp_aquario_3.innerHTML = temperatura + "°C";
+            card = card_3
+        } else if (idAquario == 4) {
+            temp_aquario_4.innerHTML = temperatura + "°C";
+            card = card_4
+        }
+
+        // alterando
+        card.className = classe_temperatura;
+
+    }
+</script>
+
+</html>

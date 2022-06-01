@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="imgs/logo1.png">
+    <title>TechBerry - Cadastro</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <div class="fundo_login">
+        <div class="header">
+            <div class="container">
+
+                <div class="titulo">
+                    <img src="imgs/logo1.png" alt="">
+                    <h1>TechBerry</h1>
+                </div>
+
+                <ul class="navBar">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="servicos.html">
+                            Serviços
+                        </a>
+                    </li>
+                    <li>
+                        <a href="simulador.html">
+                            Simulador
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="register">
+                    <a href="cadastro.html">
+                        <div class="cadastro_botao">
+                            <li>Cadastro</li>
+                        </div>
+                    </a>
+
+                    |
+
+                    <a href="login.html">
+                        <div class="login_botao">
+                            <li> Login</li>
+                        </div>
+                    </a>
+
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- BANNER -->
+
+        <div class="banner_cadastro">
+            <div class="container">
+
+                <div class="cadastro">
+                    <div class="cadastro_titulo">
+                        <h2>Cadastro</h2>
+                    </div>
+
+                    <div class="boxes_cadastro">
+                        <div class="box_cadastro">
+                            Nome
+                            <div class="campo">
+                                <input id="nome_input" class="ipt" type="text" placeholder="Nome Sobrenome">
+                                <span class="msg_erro"></span>
+                            </div>
+                            Email
+                            <div class="campo">
+                                <input id="email_input" class="ipt" type="text" placeholder="exemplo@gmail.com">
+                                <span id="erroEmail" class="msg_erro"></span>
+                            </div>
+                            CNPJ
+                            <div class="campo">
+                                <input id="cnpj_input" class="ipt" type="text" placeholder="00.000.000/0001-00">
+                                <span id="erroCNPJ" class="msg_erro"></span>
+                            </div>
+                        </div>
+
+                        <div class="linha"></div>
+
+                        <div class="box_cadastro">
+                            Telefone
+                            <div class="campo">
+                                <input id="telefone_input" type="text" class="ipt" placeholder="(99) 99999-9999">
+                                <span id="erroTelefone" class="msg_erro"></span>
+                            </div>
+                            Senha
+                            <div class="campo">
+                                <input id="senha_input" class="ipt" type="password" placeholder="**********">
+                                <span></span>
+                            </div>
+                            Confirmar Senha
+                            <div class="campo">
+                                <input id="confirmacao_senha_input" class="ipt" type="password"
+                                    placeholder="**********">
+                                <span id="erroSenha" class="msg_erro"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="mensagem_erro" class="msg_erro"></span>
+
+
+
+                    <div class="fim_cadastro">
+                        <button onclick="cadastrar()" class="btn_cadastro">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var cnpjVar = cnpj_input.value;
+        var telefoneVar = telefone_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        mensagem_erro.innerHTML = '';
+        erroTelefone.innerHTML = '';
+        erroEmail.innerHTML = '';
+        erroCNPJ.innerHTML = '';
+        erroSenha.innerHTML = '';
+
+        if (nomeVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "") {
+            mensagem_erro.innerHTML += 'Preencha todos os campos!';
+            return false;
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(".com.br") == false)) {
+            erroEmail.innerHTML += 'Ops, e-mail inválido!';
+            return false;
+        }
+
+        if(cnpjVar.length != 18){
+            erroCNPJ.innerHTML += 'Ops, CNPJ inválido! CNPJ deve ter 18 caracteres.';
+            return false;
+        }else if (cnpjVar[2] != '.') {
+            erroCNPJ.innerHTML += 'Ops, CNPJ inválido! Erro de formatação do CNPJ.';
+            return false;
+        } else if (cnpjVar[6] != '.') {
+            erroCNPJ.innerHTML += 'Ops, CNPJ inválido! Erro de formatação do CNPJ.';
+            return false;
+        } else if (cnpjVar[10] != '/') {
+            erroCNPJ.innerHTML += 'Ops, CNPJ inválido! Erro de formatação do CNPJ.';
+            return false;
+        } else if (cnpjVar[15] != '-') {
+            erroCNPJ.innerHTML += 'Ops, CNPJ inválido! Erro de formatação do CNPJ.';
+            return false;
+        }
+
+        if (cnpjVar.length != 18) {
+            erroCNPJ.innerHTML += 'O CNPJ deve ter 18 dígitos, incluindo caractéres especiais!';
+            return false;
+
+        }
+
+        if (telefoneVar.length < 8 || telefoneVar.length > 15) {
+            erroTelefone.innerHTML += 'O Telefone deve ter no mínimo 8 dígitos e no máximo 15 dígitos, incluindo caractéres especiais.';
+            return false;
+        } 
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            erroSenha.innerHTML += 'As senhas inseridas devem ser iguais para prosseguir!';
+            return false;
+
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                cnpjServer: cnpjVar,
+                telefoneServer: telefoneVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                alert('Cliente cadastrado com sucesso!')
+                window.location = "login.html";
+                limparFormulario();
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+</script>

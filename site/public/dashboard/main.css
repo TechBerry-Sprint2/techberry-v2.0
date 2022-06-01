@@ -1,0 +1,276 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+.janela {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+}
+
+.direita {
+    padding: 0 64px 32px 25%;
+    background-color: white;
+    width: 80%;
+}
+
+/* NAVBAR - INÍCIO */
+
+.esquerda {
+    /* Características da separação do lado esquerdo */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    clip-path: inset(0px -15px 0px 0px);
+    width: 17vw;
+    height: 100%;
+    padding: 32px;
+    background-color: #B31C45;
+    position: fixed;
+    overflow-y: scroll;
+}
+
+.esquerda::-webkit-scrollbar {
+    width: 12px;
+}
+
+details summary {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.esquerda summary:hover {
+    text-decoration: underline;
+}
+
+
+.hello {
+    text-align: center;
+    padding-bottom: 32px;
+    color: #fff;
+}
+
+.esquerda h1 {
+    display: table;
+    margin: 0 auto;
+    padding: 16px;
+    color: #fff;
+}
+
+.esquerdaImg img {
+    display: table;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.esquerda details {
+    font-size: 1.17em;
+}
+
+.btn_todos {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.btn-nav, .btn-logout {
+    margin-bottom: 48px;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    background-color: #E3101F;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    height: 32px;
+    border-radius: 32px;
+    padding: 18px;
+    color: white;
+  
+}
+
+.lista .btn-nav {
+    margin-bottom: 0px;
+    padding: 15px;
+}
+
+.btn-nav:hover, .btn-logout:hover {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.lista {
+    margin-bottom: 48px;
+    width: 100%;
+    height: fit-content;
+    border-radius: 32px;
+    color: black;
+    background-color: white;
+}
+
+.lista details {
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-itens {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+}
+
+.lista details .lista-itens a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #E3101F;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.icon-nav {
+    width: 24px;
+    margin-right: 12px;
+    filter: invert(100%);
+}
+
+.icon-lista {
+    width: 24px;
+    margin-right: 12px;
+}
+
+
+.selected {
+    /* font-size: larger; */
+    font-weight: bolder;
+}
+
+/* NAVBAR - FIM */
+
+/* RÉGUA - INÍCIO */
+
+.teste {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 0px 0px 24px 24px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.teste h5 {
+    font-size: medium;
+    font-weight: normal;
+    margin: 12px;
+}
+
+.nome_metrica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E3101F;
+    padding: 12px 0px 12px 0px;
+    width: 100%;
+    color:white;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.regua {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 24px;
+
+}
+
+.item-regua {
+    width: 18%;
+    height: 100px;
+    padding-bottom: 24px;
+    text-align: center;
+}
+
+.metrica_unidade {
+    background-color: #E3101F;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    color: white;
+    font-weight: bold;
+}
+
+.regua h3 {
+    margin: 12px;
+    padding: 3px;
+    border-radius: 24px;
+}
+
+.perigo-frio {
+    background-color: #485abc;
+    color: white;
+}
+
+.perigo-quente {
+    background-color: #a32600;
+    color: white;
+}
+
+.alerta-frio {
+    background-color: #42a5f5;
+    color: white;
+}
+
+.alerta-quente {
+    background-color: #e0ce2b;
+    color: white;
+}
+
+.ideal {
+    background-color: #9ccc65;
+    color: white;
+}
+
+.vazio{
+    background-color: whitesmoke;
+}
+
+/* RÉGUA - FIM */
+
+/* GRÁFICOS - COMEÇO */
+canvas {
+    padding: 24px;
+}
+
+/* GRÁFICOS - FIM */
+
+::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #E3101F;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBerry | Calculadora</title>
+    <link rel="stylesheet" href="css/simulador.css">
+    <link rel="icon" href="imgs/logo1.png">
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <div class="fundo">
+        <div class="header">
+            <div class="container">
+
+                <div class="titulo">
+                    <img src="imgs/logo1.png" alt="">
+                    <h1>TechBerry</h1>
+                </div>
+
+                <ul class="navBar">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="servicos.html">
+                            Serviços
+                        </a>
+                    </li>
+                    <li class="aqui">
+                        <a href="simulador.html">
+                            Simulador
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="register">
+                    <a href="cadastro.html">
+                        <div class="cadastro_botao">
+                            <li>Cadastro</li>
+                        </div>
+                    </a>
+
+                    |
+
+                    <a href="login.html">
+                        <div class="login_botao">
+                            <li> Login</li>
+                        </div>
+                    </a>
+
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- BANNER -->
+
+        <div class="banner">
+            <div class="container">
+                <div class="box1">
+                    <h1>Calcule o quanto você deixaria de perder com nossos serviços!</h1>
+                </div>
+                <div class="box2">
+                    <h1>Simulador Financeiro</h1>
+                    <h3>Qual a área de plantação que você deseja? (Em m²) </h3>
+                    <span>Considere:</span>
+                    <span>Muda do morango = R$5,90 </span>
+                    <span>Plantas por m² = 7,5 </span>
+                    <input class="ipt" id="area">
+                    <span id="mensagem_erro"></span>
+                    <button onclick="calculo()" id="butao">Calcular</button>
+                    <div id="resultado"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="boxes_footer1">
+
+                <div class="slogan_footer">
+                    <h1>O que faltava para desfrutar da sua produção.</h1>
+                </div>
+
+                <div class="listas_footer">
+                    <ul class="ul_footer">
+                        <h3>Empresa</h3>
+                        <li>Sobre</li>
+                        <li>Marca</li>
+                        <li>Empregos</li>
+                    </ul>
+
+                    <ul class="ul_footer">
+                        <h3>Politica</h3>
+                        <li>Termos</li>
+                        <li>Privacidade</li>
+                        <li>Configurações de cookies</li>
+                        <li>Diretrizes</li>
+                        <li>Reconhecimentos</li>
+                        <li>Licenças</li>
+                    </ul>
+
+                    <ul class="ul_footer">
+                        <h3>Contato</h3>
+
+                        <li>Tel: (11) 91234-5678</li>
+                        <li>Email: TechBerry@gmail.com</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="divisao"></div>
+
+            <div class="boxes_footer2">
+                <div class="titulo">
+                    <img src="imgs/logo1.png" alt="">
+                    <h1>TechBerry</h1>
+                </div>
+
+                <a href="cadastro.html">
+                    <div class="cadastro_botao">
+                        Cadastro
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calculo() {
+
+        if (area.value == ""){
+            mensagem_erro.style.display = 'block'
+            mensagem_erro.innerHTML = "Preencha todos os campos!"
+        }
+        else if(area.value != Number(area.value)){
+            mensagem_erro.style.display = 'block'
+            mensagem_erro.innerHTML = "Valor inválido!"
+        } 
+        else {
+        mensagem_erro.style.display = 'none'
+
+        var muda = 7.5;
+        var muda_total = area.value * muda
+        var preco = (area.value * muda) * 5.90;
+        resultado.innerHTML =
+            `Baseado na área de <u>${area.value}m²</u>, você precisará de <u>${muda_total} mudas</u>, que custarão <u>R$${preco.toFixed(2)}</u>.<br><br>Sabendo que a perda de morango por colheita é em média de 30%, nós conseguiriamos te ajudar a <b>economizar mais R$${(preco*0.3).toFixed(2)}</b> que seriam perdidos!`;
+
+        }
+    }
+</script>

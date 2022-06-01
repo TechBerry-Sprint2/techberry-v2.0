@@ -1,0 +1,380 @@
+body {
+    margin: 0;
+    background: #B31C45;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    /* border: 3px solid red; */
+    
+}
+ 
+
+/* FUNDO HEADER + BANNER */
+
+.fundo_servicos {
+    margin: auto;
+    /* background-image: url(imgs/multiple-strawberries-blue-background-cut4.jpg); */
+    background-image: url(https://i.ytimg.com/vi/l1Cnz4Jeq5Q/maxresdefault.jpg), url(https://www.colorhexa.com/b31c45.png);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 560px;
+    /* border: 3px solid purple; */
+}
+
+/* HEADER */
+
+.header {
+    /* background-color: rgb(0, 0, 0, 0.3); */
+    color: white;
+    display: flex;
+    margin-bottom: 24px;
+    /* border: 3px solid blue; */
+
+}
+
+.header .container{
+    justify-content: space-between;
+}
+
+.titulo {
+    color: white;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 35%;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.titulo img{
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    margin-right: 12px;
+    box-shadow: 1px 1px #980000;
+}
+
+.navBar {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.register {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 260px;
+    /* text-shadow: 1px 1px black;  */
+    /* border: 3px solid blue; */
+}
+
+.cadastro_botao {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    width: 98px;
+    padding: 10px;
+    border-radius: 24px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cadastro_botao:hover {
+    background-color: whitesmoke;
+}
+
+
+.cadastro_botao a{
+    color: #000;
+}
+
+.login_botao {
+    background-color: #E3101F;
+    color: white;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    width: 84px;
+    padding: 10px;
+    border-radius: 24px;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login_botao:hover{
+    background-color: #c50e0e;
+}
+
+
+.aqui {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+a {
+    color: white;
+    text-decoration: none; 
+}
+
+/* BANNER */
+
+.banner {
+    display: flex;
+    align-items: center;
+    /* border: 3px solid blue;  */
+}
+
+.banner h1 {
+    color: white;
+    font-size: 56px;
+    width: 48%;
+    /* text-shadow: 1px 1px black;  */
+}
+
+/* SOCIAL */
+.servicos{
+    background-color: #f8f8f8;
+}
+
+.servicos .container h1{
+    text-align: center;
+    padding: 24px 0 8px 0;
+    font-size: 48px;
+}
+
+.servicos .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.servicos .boxes{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding-bottom: 48px;
+    border-bottom: 1px solid gray;
+}
+
+.box1 {
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.box2 {
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.passo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 24px;
+    width: 88%;
+    padding: 24px;
+    margin: 12px 24px 12px 24px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+
+}
+
+.passo_extra {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 24px;
+    width: 88%;
+    padding: 24px;
+    margin: 12px 24px 12px 24px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    background-color: #E3101F;
+    color: white;
+}
+
+
+.passo img {
+    width: 100%;
+}
+
+.passo_extra span {
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.passo_extra h4 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.passo_extra .cadastro_botao {
+    width: 60%;
+    padding: 12px 0px 12px 0px;
+    font-size: 24px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.titulo_passo {
+    color: white;
+    background-color: #E3101F;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    border-radius: 48px;
+    padding: 12px 24px 12px 24px;
+    font-size: x-large;
+    font-weight: normal;
+}
+
+.solucao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 24px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 48px;
+}
+
+.solucao span {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: #E3101F;
+    width: 100%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    border-radius: 24px 24px 0px 0px;
+    padding: 24px 0px 24px 0px;
+    font-size: x-large;
+    font-weight: normal;
+}
+
+.solucao img {
+    margin: 48px 0px 24px 0px;   
+}
+
+.cadastro_botao:hover {
+    animation: pulsate_cad 0.75s ease-in-out;
+}
+
+@keyframes pulsate_cad {
+    0% {
+        box-shadow: 0 0 15px rgb(215, 215, 215),
+            0 0 15px rgb(215, 215, 215);
+    }
+}
+
+.login_botao:hover {
+    animation: pulsate_log 0.75s ease-in-out;
+}
+
+@keyframes pulsate_log {
+    0% {
+        box-shadow: 0 0 15px #c50e0e,
+            0 0 15px #c50e0e;
+    }
+}
+
+/* FOOTER - COMEÇO */
+
+.footer{
+    background-color: #B31C45;
+    width: 100%;
+    color: white;
+    padding-top: 72px;
+    padding-bottom: 72px;
+    
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.boxes_footer1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slogan_footer { 
+    width: 280px;
+    height: 238px;
+    display: flex;
+    align-items: top;
+    margin-right: 24px;
+}
+
+.listas_footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+.ul_footer{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 200px;
+    list-style: none;
+}
+
+.divisao {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.boxes_footer2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .titulo {
+    justify-content: left;
+}
+
+/* FOOTER - FIM */
+
+/* SCROLL BAR - COMEÇO */
+
+::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #E3101F;
+}
