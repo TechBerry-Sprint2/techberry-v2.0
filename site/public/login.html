@@ -136,8 +136,8 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
+            console.log(resposta);
+            console.log("ESTOU NO THEN DO entrar()!");
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -159,12 +159,6 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
                 mensagem_erro.innerHTML = "Ops, a conta não foi encontrada!";
-
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
             }
 
         }).catch(function (erro) {
