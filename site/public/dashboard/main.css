@@ -29,7 +29,7 @@ body {
     padding: 32px;
     background-color: #B31C45;
     position: fixed;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .esquerda::-webkit-scrollbar {
@@ -86,7 +86,8 @@ a:hover {
     justify-content: start;
 }
 
-.btn-nav, .btn-logout {
+.btn-nav,
+.btn-logout {
     margin-bottom: 48px;
     font-size: large;
     font-weight: bold;
@@ -99,7 +100,7 @@ a:hover {
     border-radius: 32px;
     padding: 18px;
     color: white;
-  
+
 }
 
 .lista .btn-nav {
@@ -107,7 +108,8 @@ a:hover {
     padding: 15px;
 }
 
-.btn-nav:hover, .btn-logout:hover {
+.btn-nav:hover,
+.btn-logout:hover {
     color: white;
     text-decoration: underline;
     cursor: pointer;
@@ -186,7 +188,7 @@ a:hover {
     background-color: #E3101F;
     padding: 12px 0px 12px 0px;
     width: 100%;
-    color:white;
+    color: white;
     font-weight: bold;
     font-size: xx-large;
 }
@@ -250,7 +252,7 @@ a:hover {
     color: white;
 }
 
-.vazio{
+.vazio {
     background-color: whitesmoke;
 }
 
@@ -270,7 +272,7 @@ canvas {
 ::-webkit-scrollbar {
     width: 12px;
 }
-  
+
 ::-webkit-scrollbar-thumb {
     background: #E3101F;
 }

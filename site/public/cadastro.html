@@ -143,20 +143,23 @@
         erroCNPJ.innerHTML = '';
         erroSenha.innerHTML = '';
 
-        if (nomeVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "") {
+        if (nomeVar == "" || cnpjVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" ||
+            telefoneVar == "") {
             mensagem_erro.innerHTML += 'Preencha todos os campos!';
             return false;
         }
 
-        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(".com.br") == false)) {
+        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (
+                emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(
+                    ".com.br") == false)) {
             erroEmail.innerHTML += 'Ops, e-mail inválido!';
             return false;
         }
 
-        if(cnpjVar.length != 18){
+        if (cnpjVar.length != 18) {
             erroCNPJ.innerHTML += 'Ops, CNPJ inválido! CNPJ deve ter 18 caracteres.';
             return false;
-        }else if (cnpjVar[2] != '.') {
+        } else if (cnpjVar[2] != '.') {
             erroCNPJ.innerHTML += 'Ops, CNPJ inválido! Erro de formatação do CNPJ.';
             return false;
         } else if (cnpjVar[6] != '.') {
@@ -177,9 +180,10 @@
         }
 
         if (telefoneVar.length < 8 || telefoneVar.length > 15) {
-            erroTelefone.innerHTML += 'O Telefone deve ter no mínimo 8 dígitos e no máximo 15 dígitos, incluindo caractéres especiais.';
+            erroTelefone.innerHTML +=
+                'O Telefone deve ter no mínimo 8 dígitos e no máximo 15 dígitos, incluindo caractéres especiais.';
             return false;
-        } 
+        }
 
         if (senhaVar != confirmacaoSenhaVar) {
             erroSenha.innerHTML += 'As senhas inseridas devem ser iguais para prosseguir!';

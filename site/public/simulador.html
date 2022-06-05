@@ -146,22 +146,20 @@
 <script>
     function calculo() {
 
-        if (area.value == ""){
+        if (area.value == "") {
             mensagem_erro.style.display = 'block'
             mensagem_erro.innerHTML = "Preencha todos os campos!"
-        }
-        else if(area.value != Number(area.value)){
+        } else if (area.value != Number(area.value)) {
             mensagem_erro.style.display = 'block'
             mensagem_erro.innerHTML = "Valor inválido!"
-        } 
-        else {
-        mensagem_erro.style.display = 'none'
+        } else {
+            mensagem_erro.style.display = 'none'
 
-        var muda = 7.5;
-        var muda_total = area.value * muda
-        var preco = (area.value * muda) * 5.90;
-        resultado.innerHTML =
-            `Baseado na área de <u>${area.value}m²</u>, você precisará de <u>${muda_total} mudas</u>, que custarão <u>R$${preco.toFixed(2)}</u>.<br><br>Sabendo que a perda de morango por colheita é em média de 30%, nós conseguiriamos te ajudar a <b>economizar mais R$${(preco*0.3).toFixed(2)}</b> que seriam perdidos!`;
+            var muda = 7.5;
+            var muda_total = area.value * muda
+            var preco = (area.value * muda) * 5.90;
+            resultado.innerHTML =
+                `Baseado na área de <u>${area.value}m²</u>, você precisará de <u>${muda_total} mudas</u>, que custarão <u>R$${preco.toFixed(2)}</u>.<br><br>Sabendo que a perda de morango por colheita é em média de 30%, nós conseguiriamos te ajudar a <b>economizar mais R$${(preco*0.3).toFixed(2)}</b> que seriam perdidos!`;
 
         }
     }

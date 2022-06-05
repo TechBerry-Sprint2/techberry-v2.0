@@ -1,4 +1,3 @@
-
 .principais {
     display: flex;
     flex-direction: column;
@@ -52,7 +51,6 @@
     align-items: center;
     text-align: center;
     width: 30%;
-    height: 300px;
     padding: 12px;
     border-radius: 24px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
@@ -118,7 +116,7 @@
 }
 
 .msg {
-    
+
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.9);
     color: white;
     font-size: 11px;
@@ -138,15 +136,15 @@
 }
 
 .msg:after {
-    content:'';
-    position:absolute;
+    content: '';
+    position: absolute;
     top: -10px;
     left: 45%;
-    width:0;
-    height:0;
-    border-right:10px solid transparent;
-    border-left:10px solid transparent;
-    border-bottom:10px solid rgba(0, 0, 0, 0.9);
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.9);
 
 }
 
@@ -167,17 +165,19 @@
     align-items: center;
 }
 
-.parte1_temp, .parte1_umid {
+.parte1_temp,
+.parte1_umid {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 6px 12px 6px 12px;
     border-radius: 24px;
-    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
     width: fit-content;
     margin: 12px 0px 0px 12px;
 }
+
 .status {
     border-radius: 100%;
     height: 18px;
@@ -185,7 +185,8 @@
     margin: 5px;
 }
 
-.box1 .parte2_temp .valor_tempReal, .box1 .parte2_umid .valor_umidReal {
+.box1 .parte2_temp .valor_tempReal,
+.box1 .parte2_umid .valor_umidReal {
     font-size: x-large;
     position: absolute;
     z-index: 1000;

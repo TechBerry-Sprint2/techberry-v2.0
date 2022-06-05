@@ -187,4 +187,19 @@ WHERE idMedida = 10605
 AND medida.idSensor = sensor.idSensor
 AND sensor.idEstufa = estufa.idEstufa
 AND estufa.idCliente = cliente.idCliente;
-																		
+
+-- Perigo em ambos - Passou nos testes; 
+INSERT INTO medida VALUES
+(NULL, 12.1, 78.07, '2022-05-25 20:02:29', 2000);
+
+-- Alerta Umidade - Ideal Temp - Passou nos testes;
+INSERT INTO medida VALUES
+(NULL, 17.8, 64.5, '2022-05-25 20:29:10', 2000);
+
+-- Alerta Temp - Ideal Umid - Passou nos testes;
+INSERT INTO medida VALUES
+(NULL, 22.10, 40.89, '2022-05-25 20:29:15', 2000);
+
+-- Perigo em ambos -- Passou nos testes
+INSERT INTO medida VALUES
+(NULL, 26.60, 76.00, '2022-05-25 20:29:23', 2000);

@@ -47,8 +47,6 @@
                         </div>
                     </a>
 
-                    |
-
                     <a href="login.html">
                         <div class="login_botao">
                             <li> Login</li>
@@ -114,7 +112,9 @@
             setInterval(sumirMensagem, 5000)
         }
 
-        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(".com.br") == false)) {
+        if (emailVar.indexOf("@") == -1 || emailVar.startsWith("@") == true || emailVar.endsWith("@") == true || (
+                emailVar.endsWith(".com") == false && emailVar.endsWith(".school") == false && emailVar.endsWith(
+                    ".com.br") == false)) {
             mensagem_erro.style.display = 'block';
             mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
             // finalizarAguardar();
@@ -136,8 +136,8 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log(resposta);
-            console.log("ESTOU NO THEN DO entrar()!");
+            console.log("ESTOU NO THEN DO entrar()!")
+
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -145,7 +145,7 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.emailCliente;
+                    sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nomeCliente;
                     sessionStorage.ID_USUARIO = json.idCliente;
 
@@ -159,6 +159,12 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
                 mensagem_erro.innerHTML = "Ops, a conta não foi encontrada!";
+
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
             }
 
         }).catch(function (erro) {

@@ -9,6 +9,7 @@
     <link rel="icon" href="../imgs/logo1.png">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="home_dashboard.css">
+    <link rel="stylesheet" href="../css/alerta.css">
     <script src="../js/funcoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -39,7 +40,6 @@
                     <span class="selected">Home</span>
                 </a>
 
-
                 <span class="lista">
                     <details>
 
@@ -60,6 +60,10 @@
                     </details>
                 </span>
 
+                <a class="btn-nav" href="https://app.pipefy.com/public/form/2Sv3OQOl" target="_blank">
+                    <img class="icon-nav" src="../imgs/contato.png" alt="">
+                    <span class="selected">Contato</span>
+                </a>
 
                 <div class="btn-logout" onclick="limparSessao()">
                     <img class="icon-nav" src="../imgs/exit-icon.png" alt="">
@@ -79,14 +83,14 @@
 
                 <div class="regua">
                     <div class="item-regua">
-                        <h3 class="perigo-frio">Perigo</h3>
-                        <h5>12.2°C</h5>
-                        <h5>20%</h5>
+                        <h3 class="perigo-quente">Perigo</h3>
+                        <h5>Abaixo de 12.3°C</h5>
+                        <h5>0% - 20%</h5>
                     </div>
                     <div class="item-regua ">
-                        <h3 class="alerta-frio">Alerta</h3>
-                        <h5>17.7°C</h5>
-                        <h5>37%</h5>
+                        <h3 class="alerta-quente">Alerta</h3>
+                        <h5>12.3C° - 17.7°C</h5>
+                        <h5>20.1% - 37%</h5>
                     </div>
                     <div class="item-regua">
                         <h3 class="ideal">Ideal</h3>
@@ -95,14 +99,35 @@
                     </div>
                     <div class="item-regua">
                         <h3 class="alerta-quente">Alerta</h3>
-                        <h5>22°C</h5>
-                        <h5>64.5%</h5>
+                        <h5>22°C - 26.6°C</h5>
+                        <h5>64.5% - 75.9%</h5>
                     </div>
                     <div class="item-regua">
                         <h3 class="perigo-quente">Perigo</h3>
-                        <h5>26.7°C</h5>
-                        <h5>76%</h5>
+                        <h5>Acima de 26.6°C</h5>
+                        <h5>76% - 100%</h5>
                     </div>
+                </div>
+            </div>
+
+            <div class="perigoBox" id="perigo">
+                <div class="mensagem">
+                    <span id="aviso">PERIGO!</span>
+                    <span id="dadosAvisoPerigo"></span>
+                </div>
+            </div>
+
+            <div class="alertaBox" id="alerta">
+                <div class="mensagem">
+                    <span id="aviso">Atenção!</span><br>
+                    <span id="dadosAvisoAlerta">Medidas não ideais</span>
+                </div>
+            </div>
+
+            <div class="idealBox" id="ideal">
+                <div class="mensagem">
+                    <span id="aviso">Tudo ok!</span><br>
+                    <span id="dadosAvisoIdeal">A temperatura e a umidade estão ideais.</span>
                 </div>
             </div>
 
@@ -116,7 +141,7 @@
                                 <span class="titulo">Temperatura Atual</span>
                                 <div class="parte1_temp">
                                     <span>Status:</span>
-                                    <div class="status ideal"></div> <span>Ideal</span>
+                                    <div class="status ideal" id="kpiTemp1"></div> <span id="statusTemp1"></span>
                                 </div>
                                 <div class="parte2_temp">
                                     <div id="divPai1">
@@ -130,7 +155,7 @@
                                 <span class="titulo">Umidade Atual</span>
                                 <div class="parte1_umid">
                                     <span>Status:</span>
-                                    <div class="status alerta-quente"></div> <span>Alerta</span>
+                                    <div class="status alerta-quente" id="kpiUmid1"></div> <span id="statusUmid1"></span>
                                 </div>
                                 <div class="parte2_umid">
                                     <div id="divPai2">
@@ -142,9 +167,9 @@
                             <div class="box2">
                                 <div class="kpi">
                                     <span class="titulo">Quantidade Sensores</span>
-                                    <span>(Ativos)</span>
-                                    <span class="valor_kpi">4</span>
-                                    <div class="valor_alerta vazio"></div>
+                                    <span>(Ativos/Total)</span>
+                                    <span class="valor_kpi">4/5</span>
+                                    <div class="valor_alerta perigo-quente"></div>
                                 </div>
                                 <div class="kpi">
                                     <span class="titulo">Anormalidades</span>
@@ -188,7 +213,7 @@
                             <span class="titulo">Temperatura Atual</span>
                             <div class="parte1_temp">
                                 <span>Status:</span>
-                                <div class="status ideal"></div> <span>Ideal</span>
+                                <div class="status ideal"></div> <span id="statusTemp2">Ideal</span>
                             </div>
                             <div class="parte2_temp">
                                 <canvas id="chart_tempReal2"></canvas>
@@ -200,7 +225,7 @@
                             <span class="titulo">Umidade Atual</span>
                             <div class="parte1_umid">
                                 <span>Status:</span>
-                                <div class="status alerta-quente"></div> <span>Alerta</span>
+                                <div class="status alerta-quente"></div> <span id="statusUmid2">Alerta</span>
                             </div>
                             <div class="parte2_umid">
                                 <canvas id="chart_umidReal2"></canvas>
@@ -210,9 +235,9 @@
                         <div class="box2">
                             <div class="kpi">
                                 <span class="titulo">Quantidade Sensores</span>
-                                <span>(Ativos)</span>
-                                <span class="valor_kpi">4</span>
-                                <div class="valor_alerta vazio"></div>
+                                <span>(Ativos/Total)</span>
+                                <span class="valor_kpi">4/5</span>
+                                <div class="valor_alerta perigo-quente"></div>
                             </div>
                             <div class="kpi">
                                 <span class="titulo">Anormalidades</span>
@@ -246,22 +271,53 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 
 </body>
 
 <script>
+    displayRed = true;
+    perigo.style.display = 'none';
+    perigoAtivado = false;
+    umidEst1 = 0;
+    tempEst1 = 0;
+    first = true;
+  
+    function chamarPerigo(arrayAlertas, arrayElemento, arrayEstufas){
+        if(perigoAtivado){
+            return false;
+        }
+        perigo.style.display = 'block';
+        for(i = 0; i < arrayAlertas.length; i++){
+            console.log(i)
+            dadosAvisoPerigo.innerHTML += `<br>A ${arrayEstufas[i]} está com a ${arrayElemento[i]} ${arrayAlertas[i]}!`;
+        }
+
+        setInterval(()=>{
+            if(displayRed){
+                perigo.style.backgroundColor = "white";
+                perigo.style.borderColor = "red";
+                perigo.style.color = "red";
+                displayRed = false;
+                document.title = 'TechBerry - ALERTA!';
+            }else{
+                perigo.style.backgroundColor = "rgba(255, 0, 0, 0.745)";
+                perigo.style.borderColor = "none";
+                perigo.style.color = "white";
+                displayRed = true;
+                document.title = 'TechBerry - Dashboard';
+            }
+        }, 1000)
+    }
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     var idEstufa = 0;
     var idSensor = 0;
     var idMedida = 0;
     var tempEst1 = 0;
     var umidEst1 = 0;
-    
+
     fetch("/medidas/pegarEstufas", {
         method: 'POST',
         headers: {
@@ -279,188 +335,330 @@
             })
         }
     })
-function buscarSensor() {
-    
-    fetch("/medidas/pegarSensores", {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idEstufa: idEstufa
-        })
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(json => {
-                console.log(json[0].idSensor);
-                idSensor = json[0].idSensor;
-                sessionStorage.ID_SENSOR = idSensor;
-                setInterval(() => {
-                    buscarMedida();       
-                }, 1000);
+
+    function buscarSensor() {
+        fetch("/medidas/pegarSensores", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEstufa: idEstufa
             })
-        }
-    })
-}
-function buscarMedida() {
-    
-    fetch("/medidas/pegarMedida", {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idSensor: idSensor
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json[0].idSensor);
+                    idSensor = json[0].idSensor;
+                    sessionStorage.ID_SENSOR = idSensor;
+                    setInterval(() => {
+                        buscarMedida();
+                    }, 2000);
+                })
+            }
         })
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(json => {
-                console.log(json[0].idMedida);
-                idMedida = json[0].idMedida;
-                console.log(json[0].temperaturaRegistrada);
-                tempEst1 = json[0].temperaturaRegistrada;
-                console.log(json[0].umidadeRegistrada);
-                umidEst1 = json[0].umidadeRegistrada;
+    }
 
-
-        document.getElementById('chart_umidReal').remove();
-        document.getElementById('chart_tempReal').remove();
-
-        ngt = document.createElement('canvas');
-        ngt.setAttribute('id', 'chart_tempReal');
-        spT1.innerHTML = `${tempEst1}ºC`;
-        divPai1.appendChild(ngt);
-
-        ngu = document.createElement('canvas');
-        ngu.setAttribute('id', 'chart_umidReal');
-        spU1.innerHTML = `${umidEst1}%`;
-        divPai2.appendChild(ngu);
-
-
-
-                var data_tempReal = {
-        labels: [
-            'Temperatura Atual em °C'
-        ],
-        datasets: [{
-            labels: [tempEst1],
-            data: [tempEst1, (26.7-tempEst1)],
-            backgroundColor: [
-                '#9ccc65',
-                'whitesmoke'
-            ],
-            hoverOffset: 4
-        }]
-    };
-    var config_tempReal = {
-        type: 'doughnut',
-        data: data_tempReal,
-        options: {
-            circumference: 180,
-            rotation: 270,
-            animation: 0
-        }
-    };
-
-    var data_umidReal = {
-        labels: [
-            'Umidade Atual em %'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [umidEst1, (100 - umidEst1)],
-            backgroundColor: [
-                '#e0ce2b',
-                'whitesmoke'
-            ],
-            hoverOffset: 4
-        }]
-    };
-
-    var config_umidReal = {
-        type: 'doughnut',
-        data: data_umidReal,
-        options: {
-            circumference: 180,
-            rotation: 270,
-            animation: 0
-        }
-    };
-
-    var chart_tempReal = new Chart(
-        document.getElementById('chart_tempReal'),
-        config_tempReal
-    );
-    var chart_umidReal = new Chart(
-        document.getElementById('chart_umidReal'),
-        config_umidReal
-    );
+    function buscarMedida() {
+        fetch("/medidas/pegarMedida", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idSensor: idSensor
             })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    corTemp = '';
+                    corUmid = '';
+                    perigoVerificador = false;
+                    arrayEstufas = [];
+                    arrayElemento = [];
+                    arrayAlertas = [];
+                    statusT1 = '';
+                    statusU1 = '';
+
+                    console.log(json[0].idMedida);
+                    idMedida = json[0].idMedida;
+                    console.log(json[0].temperaturaRegistrada);
+                    tempEst1 = json[0].temperaturaRegistrada;
+                    console.log(json[0].umidadeRegistrada);
+                    umidEst1 = json[0].umidadeRegistrada;
+
+                    if (tempEst1 <= 12.2){
+                        arrayAlertas.push('abaixo de 12.3ºC');
+                        arrayElemento.push('temperatura');
+                        arrayEstufas.push('Estufa 1');
+                        corTemp = '#a32600';
+                        statusTemp1.innerHTML = 'Perigo Frio';
+                        kpiTemp1.setAttribute('class', 'status perigo-quente');
+                        perigoVerificador = true;
+                        statusT1 = 'Perigo';
+                    }else if (tempEst1 <= 21.99){
+                        corTemp = '#9ccc65';
+                        statusTemp1.innerHTML = 'Ideal';
+                        statusT1 = 'Ideal';
+                    }else if (tempEst1 >= 22 && tempEst1 <= 25.99){
+                        corTemp = '#e0ce2b';
+                        statusTemp1.innerHTML = 'Alerta';
+                        kpiTemp1.setAttribute('class', 'status alerta-quente');
+                        statusT1 = 'Alerta';
+                    }else{
+                        arrayAlertas.push('acima de 26.7ºC');
+                        arrayElemento.push('temperatura');
+                        arrayEstufas.push('Estufa 1');
+                        corTemp = '#a32600';
+                        statusTemp1.innerHTML = 'Perigo Quente';
+                        kpiTemp1.setAttribute('class', 'status perigo-quente');
+                        perigoVerificador = true;
+                        statusT1 = 'Perigo';
+                    }
+
+                    if (umidEst1 <= 20){
+                        arrayAlertas.push('abaixo de 20.1%');
+                        arrayElemento.push('umidade');
+                        arrayEstufas.push('Estufa 1');
+                        corUmid = '#a32600';
+                        statusUmid1.innerHTML = 'Perigo Frio';
+                        kpiUmid1.setAttribute('class', 'status perigo-quente');
+                        perigoVerificador = true;
+                        statusU1 = 'Perigo';
+                    }else if (umidEst1 >= 20.01 && umidEst1 <= 37.1){
+                        corUmid = '#e0ce2b';
+                        statusUmid1.innerHTML = 'Alerta';
+                        kpiUmid1.setAttribute('class', 'status alerta-quente');
+                        statusU1 = 'Alerta';
+                    }else if (umidEst1 >= 37.1 && umidEst1 <= 64.49){
+                        corUmid = '#66B366';
+                        statusUmid1.innerHTML = 'Ideal';
+                        kpiUmid1.setAttribute('class', 'status ideal');
+                        statusU1 = 'Ideal';
+                    }else if (umidEst1 >= 64.5 && umidEst1 <= 75.99){
+                        corUmid = '#e0ce2b';
+                        statusUmid1.innerHTML = 'Alerta';
+                        kpiUmid1.setAttribute('class', 'status alerta-quente');
+                        statusU1 = 'Alerta';
+                    }else{
+                        arrayAlertas.push('acima de 75.9%');
+                        arrayElemento.push('umidade');
+                        arrayEstufas.push('Estufa 1');
+                        corUmid = '#a32600';
+                        statusUmid1.innerHTML = 'Perigo Quente';
+                        kpiUmid1.setAttribute('class', 'status perigo-quente');
+                        perigoVerificador = true;
+                        statusU1 = 'Perigo';
+                    }
+
+                    if(statusT1 == 'Perigo' && statusU1 == 'Perigo'){
+                        ideal.style.display = 'none';
+                        alerta.style.display = 'none';
+                        chamarPerigo(arrayAlertas, arrayElemento, arrayEstufas);
+                        perigoAtivado = true;
+                    }else if(statusT1 == 'Ideal' && statusU1 == 'Ideal'){
+                        alerta.style.display = 'none';
+                        perigo.style.display = 'none';
+                        ideal.style.display = 'block';
+                        perigoAtivado = false;
+                    }else{
+                        ideal.style.display = 'none';
+                        perigo.style.display = 'none';
+                        alerta.style.display = 'block';
+                        perigoAtivado = false;
+                    }
+
+                    document.getElementById('chart_umidReal').remove();
+                    document.getElementById('chart_tempReal').remove();
+
+                    ngt = document.createElement('canvas');
+                    ngt.setAttribute('id', 'chart_tempReal');
+                    spT1.innerHTML = `${tempEst1}ºC`;
+                    divPai1.appendChild(ngt);
+
+                    ngu = document.createElement('canvas');
+                    ngu.setAttribute('id', 'chart_umidReal');
+                    spU1.innerHTML = `${umidEst1}%`;
+                    divPai2.appendChild(ngu);
+
+                    var data_tempReal = {
+                        labels: [
+                            'Temperatura Atual em °C'
+                        ],
+                        datasets: [{
+                            labels: [tempEst1],
+                            data: [tempEst1, (26.7 - tempEst1)],
+                            backgroundColor: [
+                                corTemp,
+                                'whitesmoke'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    };
+                    var config_tempReal = {
+                        type: 'doughnut',
+                        data: data_tempReal,
+                        options: {
+                            circumference: 180,
+                            rotation: 270,
+                            animation: 0
+                        }
+                    };
+
+                    var data_umidReal = {
+                        labels: [
+                            'Umidade Atual em %'
+                        ],
+                        datasets: [{
+                            label: 'My First Dataset',
+                            data: [umidEst1, (100 - umidEst1)],
+                            backgroundColor: [
+                                corUmid,
+                                'whitesmoke'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    };
+
+                    var config_umidReal = {
+                        type: 'doughnut',
+                        data: data_umidReal,
+                        options: {
+                            circumference: 180,
+                            rotation: 270,
+                            animation: 0
+                        }
+                    };
+
+                    var chart_tempReal = new Chart(
+                        document.getElementById('chart_tempReal'),
+                        config_tempReal
+                    );
+                    var chart_umidReal = new Chart(
+                        document.getElementById('chart_umidReal'),
+                        config_umidReal
+                    );
+                })
+            }
+        })
+
+        if(first){
+            first = false;
+            chamarEstufa2();
         }
-    })
-}
+    }
 
+    function chamarEstufa2(){
+        var umidEst2 = 61.43;
+        var tempEst2 = 18.4;
 
+        if (tempEst2 <= 12.2){
+            corTemp = '#a32600';
+            statusTemp1.innerHTML = 'Perigo Frio';
+            kpiTemp1.setAttribute('class', 'status perigo');
+            statusT1 = 'Perigo';
+        }else if (tempEst2 <= 21.99){
+            corTemp = '#9ccc65';
+            statusTemp1.innerHTML = 'Ideal';
+            statusT1 = 'Ideal';
+        }else if (tempEst2 >= 22 && tempEst2 <= 25.99){
+            corTemp = '#e0ce2b';
+            statusTemp1.innerHTML = 'Alerta';
+            kpiTemp1.setAttribute('class', 'status alerta-quente');
+            statusT1 = 'Alerta';
+        }else{
+            corTemp = '#a32600';
+            statusTemp1.innerHTML = 'Perigo Quente';
+            kpiTemp1.setAttribute('class', 'status perigo-quente');
+            perigoVerificador = true;
+            statusT1 = 'Perigo';
+        }
 
-    
-    var data_tempReal2 = {
-        labels: [
-            'Temperatura Atual em °C'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [estufa2temp.toFixed(1), (26.7 - estufa2temp)],
-            backgroundColor: [
-                '#9ccc65',
-                'whitesmoke'
+        if (umidEst2 <= 20){
+            corUmid = '#a32600';
+            statusUmid1.innerHTML = 'Perigo Frio';
+            kpiUmid1.setAttribute('class', 'status perigo-quente');
+            perigoVerificador = true;
+            statusU1 = 'Perigo';
+        }else if (umidEst2 >= 20.01 && umidEst2 <= 37.1){
+            corUmid = '#e0ce2b';
+            statusUmid1.innerHTML = 'Alerta';
+            kpiUmid1.setAttribute('class', 'status alerta-quente');
+            statusU1 = 'Alerta';
+        }else if (umidEst2 >= 37.1 && umidEst2 <= 64.49){
+            corUmid = '#66B366';
+            statusUmid1.innerHTML = 'Ideal';
+            kpiUmid1.setAttribute('class', 'status ideal');
+            statusU1 = 'Ideal';
+        }else if (umidEst2 >= 64.5 && umidEst2 <= 75.99){
+            corUmid = '#e0ce2b';
+            statusUmid1.innerHTML = 'Alerta';
+            kpiUmid1.setAttribute('class', 'status alerta-quente');
+            statusU1 = 'Alerta';
+        }else{
+            corUmid = '#a32600';
+            statusUmid1.innerHTML = 'Perigo Quente';
+            kpiUmid1.setAttribute('class', 'status perigo-quente');
+            perigoVerificador = true;
+            statusU1 = 'Perigo';
+        }
+
+        var data_tempReal2 = {
+            labels: [
+                'Temperatura Atual em °C'
             ],
-            hoverOffset: 4
-        }]
-    };
-    var config_tempReal2 = {
-        type: 'doughnut',
-        data: data_tempReal2,
-        options: {
-            circumference: 180,
-            rotation: 270
-        }
-    };
+            datasets: [{
+                label: 'My First Dataset',
+                data: [tempEst2.toFixed(1), (26.7 - tempEst2)],
+                backgroundColor: [
+                    corTemp,
+                    'whitesmoke'
+                ],
+                hoverOffset: 4
+            }]
+        };
+        var config_tempReal2 = {
+            type: 'doughnut',
+            data: data_tempReal2,
+            options: {
+                circumference: 180,
+                rotation: 270
+            }
+        };
 
-    var data_umidReal2 = {
-        labels: [
-            'Umidade Atual em %'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [estufa2umi.toFixed(1), (76 - estufa2umi)],
-            backgroundColor: [
-                '#00f2ff',
-                'whitesmoke'
+        var data_umidReal2 = {
+            labels: [
+                'Umidade Atual em %'
             ],
-            hoverOffset: 4
-        }]
-    };
+            datasets: [{
+                label: 'My First Dataset',
+                data: [umidEst2.toFixed(1), (100 - umidEst2)],
+                backgroundColor: [
+                    corUmid,
+                    'whitesmoke'
+                ],
+                hoverOffset: 4
+            }]
+        };
 
-    var config_umidReal2 = {
-        type: 'doughnut',
-        data: data_umidReal2,
-        options: {
-            circumference: 180,
-            rotation: 270
-        }
-    };
+        var config_umidReal2 = {
+            type: 'doughnut',
+            data: data_umidReal2,
+            options: {
+                circumference: 180,
+                rotation: 270
+            }
+        };
 
-    var chart_tempReal2 = new Chart(
-        document.getElementById('chart_tempReal2'),
-        config_tempReal2
-    );
-    var chart_umidReal2 = new Chart(
-        document.getElementById('chart_umidReal2'),
-        config_umidReal2
-    );
-
-
-
+        var chart_tempReal2 = new Chart(
+            document.getElementById('chart_tempReal2'),
+            config_tempReal2
+        );
+        var chart_umidReal2 = new Chart(
+            document.getElementById('chart_umidReal2'),
+            config_umidReal2
+        );
+    }
 
     // GRÁFICO TEMPERATURA (ESTUFA 2) - TEMPERATURA EM TEMPO REAL
 
