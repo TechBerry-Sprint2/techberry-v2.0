@@ -230,6 +230,21 @@
     text-align: center;
 }
 
+.valor_tempReal1, .valor_umidReal1 {
+    margin: 10vh 0 5vh 0;
+    font-size: xx-large;
+}
+
+.boxes_sensores .box3{
+    height: fit-content;
+    padding: 5vh 0 5vh 0;
+}
+
+.boxes_sensores .parte1_temp, .boxes_sensores .parte1_umid {
+    margin-bottom: 2vh;
+}
+
+
 .principal2 {
     width: 48%;
     display: flex;
@@ -238,6 +253,7 @@
     justify-content: flex-start;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
     border-radius: 24px;
+    margin-bottom: 24px;
 }
 
 .nome_sensor {
