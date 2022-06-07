@@ -23,7 +23,7 @@ function cadastrar(nome, cnpj, telefone, email, senha) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `INSERT INTO cliente (nome, cnpj, telefone, email, senha) VALUES ('${nome}', '${cnpj}', '${telefone}', '${email}', CONVERT(VARCHAR(32), HashBytes('MD5', '${senha}'), 2));`;
+        instrucaoSql = `INSERT INTO cliente (nomeCliente, cnpj, telefoneCliente, emailCliente, senha) VALUES ('${nome}', '${cnpj}', '${telefone}', '${email}', CONVERT(VARCHAR(32), HashBytes('MD5', '${senha}'), 2));`;
     }
     else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `INSERT INTO cliente (nomeCliente, cnpj, telefoneCliente, emailCliente, senha) VALUES ('${nome}', '${cnpj}', '${telefone}', '${email}', MD5('${senha}'));`;
