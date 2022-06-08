@@ -32,8 +32,8 @@ function cadastrar(nome, cnpj, telefone, email, senha) {
         return
     }
 
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 module.exports = {
